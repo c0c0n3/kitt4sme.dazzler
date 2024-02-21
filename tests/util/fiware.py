@@ -13,7 +13,8 @@ from fipy.sim.generator import BoolAttr, float_attr_close_to, \
 from dazzler.dash.board.insight.datasource import \
     example_ngsi_structured_value_1, example_ngsi_structured_value_2
 from dazzler.ngsy import InsightEntity, InspectionDemoEntity, \
-    RoughnessEstimateEntity, WorkerEntity, WorkerStatesAttr, Datetime, Fatigue, WorkerStates
+    RoughnessEstimateEntity, WorkerEntity, WorkerStatesAttr, Datetime, Fatigue, WorkerStates, \
+    MachineStatusPrediction
 
 
 TENANT = 'demo'
@@ -129,3 +130,22 @@ def mk_fams_demo_worker_batches_stream() -> Generator[List[WorkerEntity], None, 
 
 
 fams_demo_worker_batches_stream = mk_fams_demo_worker_batches_stream()
+
+
+
+def mk_optiplant_estimate() -> MachineStatusPrediction:
+    return MachineStatusPrediction(
+        id = '',
+        status=float_attr_close_to(5.07)
+    )
+
+
+def mk_optiplant_estimate_batches_stream() \
+    -> Generator[List[MachineStatusPrediction], None, None]:
+    factory = EntityFactory.with_numeric_suffixes(
+        how_many=2, generator=mk_optiplant_estimate
+    )
+    return entity_batch(factory)
+
+
+optiplant_estimate_batches_stream = mk_optiplant_estimate_batches_stream()

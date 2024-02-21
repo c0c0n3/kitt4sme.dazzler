@@ -12,3 +12,5 @@ boards:
     board_path: sleuth
   - builder: dazzler.dash.board.fams.dash_builder
     board_path: fams
+  - builder: dazzler.dash.board.optiplant.dash_builder
+    board_path: optiplant
