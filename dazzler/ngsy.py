@@ -73,3 +73,11 @@ class WorkerStatesAttr(Attr):
 class WorkerEntity(BaseEntity):
     type = WORKER_TYPE
     workerStates: Optional[StructuredValueAttr]
+
+
+
+OPTIPLANT_ESTIMATE_TYPE = 'MachineStatusPrediction'
+
+class MachineStatusPrediction(BaseEntity):
+    type = OPTIPLANT_ESTIMATE_TYPE
+    status: FloatAttr

@@ -90,8 +90,8 @@ you'll find a Docker compose file with
 
 * Quantum Leap with a CrateDB backend
 * Our Dazzler service
-* Dazzler config to make the VIQE, Insight, FAMS and Roughnator
-  dashboards available to a tenant named "demo".
+* Dazzler config to make the VIQE, Insight, FAMS, Roughnator and
+  Optiplant dashboards available to a tenant named "demo".
 
 To start the show, run (Ctrl+C to stop)
 
@@ -102,9 +102,9 @@ $ python tests/sim
 
 This will bring up the Docker compose environment (assuming you've got a
 Docker engine running already) and then will start sending Quantum Leap
-Roughnator estimates, VIQE inspection reports, Insight forecasts and
-FAMS fatigue measurements. To see what's going on, browse to the CrateDB
-Web UI at: http://localhost:4200.
+Roughnator estimates, VIQE inspection reports, Insight forecasts, FAMS
+fatigue measurements and Optiplant machine status predictions. To see
+what's going on, browse to the CrateDB Web UI at: http://localhost:4200.
 
 Now browse to the Roughnator dashboard at:
 
@@ -133,7 +133,7 @@ When you get there, you should see two graphs, one showing current
 fatigue levels per production line and the other plotting fatigue
 over time per production line.
 
-Finally, we've got a demo for the Insight Generator dashboard too.
+We've got a demo for the Insight Generator dashboard too.
 In this demo, the simulator sends Insight entities to Orion and the
 dashboard picks them up and displays them at
 
@@ -147,6 +147,16 @@ structured value, there's a corresponding time series to fetch. We
 also have a tech preview for this scenario at
 
 - http://localhost:8000/dazzler/demo/-/insight-preview/
+
+Finally, you can browse to the Optiplant dashboard at:
+
+- http://localhost:8000/dazzler/demo/-/optiplant/
+
+You should see the dashboard with an explanation of what it is and
+how it works. Load the available estimate entity IDs, then select
+one to plot the data. The dashboard fetches new data from Quantum
+Leap every few seconds, so as the simulator sends entities you should
+be able to see the new data points reflected in the plot.
 
 
 

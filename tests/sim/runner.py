@@ -6,7 +6,8 @@ from fipy.ngsi.quantumleap import QuantumLeapClient
 
 from tests.util.fiware import quantumleap_client, \
     inspection_demo_batches_stream, roughness_estimate_batches_stream, \
-    orion_client, insight_demo_batches_stream, fams_demo_worker_batches_stream
+    orion_client, insight_demo_batches_stream, fams_demo_worker_batches_stream, \
+    optiplant_estimate_batches_stream
 
 
 docker = DockerCompose(__file__)
@@ -24,7 +25,8 @@ def send_entities(quantumleap: QuantumLeapClient, orion: OrionClient):
 
         batch = next(roughness_estimate_batches_stream) + \
                 next(inspection_demo_batches_stream) + \
-                next(fams_demo_worker_batches_stream)
+                next(fams_demo_worker_batches_stream) + \
+                next(optiplant_estimate_batches_stream)
         quantumleap.insert_entities(batch)
     except Exception as e:
         print(e)
